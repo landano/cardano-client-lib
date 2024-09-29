@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'    
 }
 
 repositories {
@@ -134,13 +136,15 @@ subprojects {
     }
 
     task sourceJar(type: Jar) {
-        classifier "sources"
+        // classifier "sources"
+        archiveClassifier.set('sources') // Updated method
         from sourceSets.main.allJava
     }
 
     task javadocJar(type: Jar, dependsOn: javadoc) {
 
-        classifier "javadoc"
+        // classifier "javadoc"
+        archiveClassifier.set('javadoc') // Updated method
         from javadoc.destinationDir
     }
 
@@ -174,7 +178,8 @@ subprojects {
                 }
 
                 dependencies {
-                    implementation project
+                    // implementation project
+                    implementation project(':address')
                 }
 
                 targets {
@@ -255,4 +260,9 @@ subprojects {
             sign publishing.publications
         }
     }
+}
+
+shadowJar {
+    // Configuration for the shadow JAR
+    mergeServiceFiles()
 }

@@ -6,6 +6,10 @@
 [![License](https://img.shields.io:/github/license/bloxbean/cardano-client-lib?color=blue&label=license)](https://github.com/bloxbean/cardano-client-lib/blob/master/LICENSE)
 
 </div>
+### Landano alterations
+Added shadowJar to build.gradle to create a fat jar
+To create it, clone the project and then run:
+gradle shadowJar
 
 A client library for Cardano in Java. This library simplifies the interaction with Cardano blockchain from a Java application.
 
